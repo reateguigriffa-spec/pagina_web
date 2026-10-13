@@ -1,191 +1,341 @@
+
 /* =========================================
    1. RESET Y BASE
    ========================================= */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 :root {
-  --azul-panel: #3a6fc4;
-  --azul-panel-claro: #5b8fdc;
-  --azul-oscuro: #1b2b57;
-  --texto: #3c4350;
-  --borde: #cfd6e4;
-  --boton: #6b7280;
-  --boton-hover: #565c68;
-  --fondo-der: #eef3fb;
+    --azul-panel: #3a6fc4;
+    --azul-panel-claro: #5b8fdc;
+    --azul-oscuro: #1b2b57;
+    --texto: #3c4350;
+    --borde: #cfd6e4;
+    --boton: #6b7280;
+    --boton-hover: #565c68;
+    --fondo-der: #eef3fb;
 }
 
-html,
-body {
-  height: 100%;
+html {
+    min-height: 100%;
 }
 
 body {
-  font-family: "Poppins", "Montserrat", Arial, sans-serif;
-  color: var(--texto);
-  background: var(--fondo-der);
+    min-height: 100vh;
+    min-height: 100dvh;
+    font-family: "Poppins", "Montserrat", Arial, sans-serif;
+    color: var(--texto);
+    background: var(--fondo-der);
 }
 
 /* =========================================
-   2. LAYOUT GENERAL (PC): dos paneles
+   2. LAYOUT GENERAL
    ========================================= */
 .login-page {
-  display: grid;
-  grid-template-columns: 46fr 54fr;
-  min-height: 100vh;
-  min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 46fr 54fr;
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
 }
 
 /* =========================================
    3. PANEL IZQUIERDO
    ========================================= */
 .promo {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(20px, 3.5vh, 44px);
-  padding: clamp(32px, 5vh, 72px) clamp(24px, 3vw, 64px);
-  background:
-    radial-gradient(120% 90% at 20% 10%, var(--azul-panel-claro) 0%, transparent 60%),
-    linear-gradient(180deg, var(--azul-panel) 0%, #2f5eb0 100%);
-  overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(20px, 3.5vh, 44px);
+    padding: clamp(32px, 5vh, 72px)
+             clamp(24px, 3vw, 64px);
+    background:
+        radial-gradient(
+            120% 90% at 20% 10%,
+            var(--azul-panel-claro) 0%,
+            transparent 60%
+        ),
+        linear-gradient(
+            180deg,
+            var(--azul-panel) 0%,
+            #2f5eb0 100%
+        );
+    overflow: hidden;
 }
 
 .promo-text {
-  text-align: center;
-  color: #fff;
+    text-align: center;
+    color: #fff;
 }
 
 .promo-lead {
-  font-size: clamp(18px, 1.7vw, 30px);
-  font-weight: 500;
-  line-height: 1.3;
+    font-size: clamp(18px, 1.7vw, 30px);
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .promo-badge {
-  display: inline-block;
-  margin-top: clamp(8px, 1.2vh, 16px);
-  padding: 0.25em 1em;
-  background: var(--azul-oscuro);
-  border-radius: 10px;
-  font-size: clamp(20px, 2vw, 36px);
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: 0.2px;
+    display: inline-block;
+    margin-top: 12px;
+    padding: 0.25em 1em;
+    background: var(--azul-oscuro);
+    border-radius: 10px;
+    font-size: clamp(18px, 2vw, 36px);
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 0.2px;
 }
 
+/* Imagen principal */
 .promo-figure {
-  /* contenedor de la foto; el SVG es el respaldo si no hay imagen */
-  width: min(100%, clamp(240px, 24vw, 460px));
-  aspect-ratio: 300 / 380;
-  background: url("../images/celular-facial.svg") center / contain no-repeat;
+    width: min(100%, 460px);
+    aspect-ratio: 300 / 380;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        url("../images/celular-facial.svg")
+        center / contain no-repeat;
 }
 
 .promo-figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
+/* Logo */
 .promo-logo {
-  position: absolute;
-  left: clamp(20px, 2.4vw, 44px);
-  bottom: clamp(16px, 3vh, 36px);
-  height: clamp(22px, 2.2vw, 40px);
-  width: auto;
+    position: absolute;
+    left: clamp(20px, 2.4vw, 44px);
+    bottom: clamp(16px, 3vh, 36px);
+    width: auto;
+    max-width: 140px;
+    height: clamp(22px, 2.2vw, 40px);
+    object-fit: contain;
 }
 
 /* =========================================
-   4. PANEL DERECHO: FORMULARIO + HEXÁGONOS
+   4. PANEL DERECHO
    ========================================= */
 .auth {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(32px, 5vh, 72px) clamp(24px, 4vw, 80px);
-  background: var(--fondo-der) url("../images/hexagonos.svg") right bottom / auto 100% no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(32px, 5vh, 72px)
+             clamp(24px, 4vw, 80px);
+    background:
+        var(--fondo-der)
+        url("../images/hexagonos.svg")
+        right bottom / auto 100% no-repeat;
 }
 
 .login-form {
-  width: min(100%, clamp(340px, 28vw, 520px));
+    position: relative;
+    width: 100%;
+    max-width: 520px;
 }
 
 .login-title {
-  margin-bottom: clamp(20px, 3.4vh, 40px);
-  font-size: clamp(28px, 2.6vw, 48px);
-  font-weight: 400;
-  color: var(--texto);
+    margin-bottom: clamp(20px, 3.4vh, 40px);
+    font-size: clamp(28px, 2.6vw, 48px);
+    font-weight: 400;
+    color: var(--texto);
+    line-height: 1.25;
+}
+
+.login-description {
+    margin-top: -12px;
+    margin-bottom: 26px;
+    color: #68778b;
+    font-size: 14px;
 }
 
 .field {
-  margin-bottom: clamp(14px, 2.2vh, 26px);
+    margin-bottom: clamp(14px, 2.2vh, 26px);
 }
 
 .field label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: clamp(14px, 1.1vw, 20px);
-  font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+    font-size: clamp(14px, 1.1vw, 20px);
+    font-weight: 500;
 }
 
 .field input {
-  width: 100%;
-  padding: 0.7em 0.9em;
-  font: inherit;
-  font-size: clamp(13px, 1vw, 18px);
-  color: var(--texto);
-  background: #fff;
-  border: 1px solid var(--borde);
-  border-radius: 4px;
-  outline: none;
-  transition: border-color .15s, box-shadow .15s;
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.7em 0.9em;
+    font-family: inherit;
+    font-size: clamp(14px, 1vw, 18px);
+    color: var(--texto);
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .field input::placeholder {
-  color: #a3acba;
+    color: #a3acba;
 }
 
 .field input:focus {
-  border-color: var(--azul-panel);
-  box-shadow: 0 0 0 3px rgba(58, 111, 196, .2);
+    border-color: var(--azul-panel);
+    box-shadow: 0 0 0 3px rgba(58, 111, 196, 0.2);
 }
 
-/* Botón */
+/* =========================================
+   5. BOTÓN
+   ========================================= */
 .btn-submit {
-  display: block;
-  width: 62%;
-  margin: clamp(22px, 4vh, 48px) auto 0;
-  padding: 0.8em 1em;
-  font: inherit;
-  font-size: clamp(15px, 1.25vw, 22px);
-  font-weight: 500;
-  letter-spacing: 1.2px;
-  color: #fff;
-  background: var(--boton);
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background .15s, transform .05s;
+    display: block;
+    width: 62%;
+    min-height: 44px;
+    margin: clamp(22px, 4vh, 48px) auto 0;
+    padding: 0.8em 1em;
+    font-family: inherit;
+    font-size: clamp(15px, 1.25vw, 22px);
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    color: #fff;
+    background: var(--boton);
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
 }
 
 .btn-submit:hover {
-  background: var(--boton-hover);
+    background: var(--boton-hover);
 }
 
 .btn-submit:active {
-  transform: translateY(1px);
+    transform: translateY(1px);
 }
 
 .btn-submit:focus-visible {
-  outline: 3px solid rgba(58, 111, 196, .5);
-  outline-offset: 2px;
+    outline: 3px solid rgba(58, 111, 196, 0.5);
+    outline-offset: 3px;
+}
+
+.demo-notice {
+    margin-top: 18px;
+    color: #68778b;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* =========================================
+   6. TABLET
+   ========================================= */
+@media (max-width: 900px) {
+    .login-page {
+        grid-template-columns: 42fr 58fr;
+    }
+
+    .promo {
+        padding: 30px 20px;
+    }
+
+    .auth {
+        padding: 35px 24px;
+    }
+
+    .btn-submit {
+        width: 75%;
+    }
+}
+
+/* =========================================
+   7. CELULAR
+   ========================================= */
+@media (max-width: 650px) {
+    .login-page {
+        grid-template-columns: 1fr;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .promo {
+        gap: 14px;
+        padding: 28px 20px 24px;
+        min-height: auto;
+    }
+
+    .promo-lead {
+        font-size: 15px;
+    }
+
+    .promo-badge {
+        font-size: 19px;
+    }
+
+    .promo-figure {
+        width: min(100%, 150px);
+        aspect-ratio: 1 / 1;
+    }
+
+    .promo-logo {
+        position: static;
+        width: auto;
+        max-width: 110px;
+        height: 28px;
+    }
+
+    .auth {
+        padding: 32px 24px;
+        background-size: auto 100%;
+    }
+
+    .login-form {
+        max-width: 420px;
+    }
+
+    .login-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    .field label {
+        font-size: 14px;
+    }
+
+    .field input {
+        font-size: 16px;
+    }
+
+    .btn-submit {
+        width: 100%;
+        margin-top: 26px;
+        font-size: 15px;
+    }
+}
+
+/* =========================================
+   8. CELULARES MUY PEQUEÑOS
+   ========================================= */
+@media (max-width: 360px) {
+    .auth {
+        padding: 26px 18px;
+    }
+
+    .promo {
+        padding: 22px 16px;
+    }
+
+    .login-title {
+        font-size: 25px;
+    }
 }
