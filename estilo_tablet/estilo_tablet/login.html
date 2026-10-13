@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="icon" href="assets/icons/senati.ico" type="image/x-icon">
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* ===== FONDO: cubre toda la pantalla ===== */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", "Montserrat", Arial, sans-serif;
+
+        /* Si tienes la imagen de fondo de tu diseño, descomenta esta línea
+           y borra el bloque "background" de abajo:
+        background: url("assets/images/fondo_login.png") center / cover no-repeat;
+        */
+        background:
+          linear-gradient(135deg, transparent 55%, rgba(60, 130, 255, .35) 55%, rgba(60, 130, 255, .35) 75%, transparent 75%),
+          linear-gradient(45deg, transparent 60%, rgba(30, 100, 230, .30) 60%, rgba(30, 100, 230, .30) 85%, transparent 85%),
+          linear-gradient(160deg, #0a1f8f 0%, #0c3bc4 50%, #0a2a9e 100%);
+        background-attachment: fixed;
+      }
+
+      /* ===== CONTENEDOR (tablet: 834 px de ancho) ===== */
+      .login-container {
+        position: relative;
+        width: min(100vw, calc(100vh * 834 / 534));
+        max-width: 834px;
+        aspect-ratio: 834 / 534;
+        container-type: inline-size;
+      }
+
+      /* ===== TARJETA ===== */
+      .login-card {
+        position: absolute;
+        top: 10%;
+        left: 9.7%;
+        width: 78%;
+        height: 78.5%;
+        display: flex;
+        border-radius: 28px;
+        border-radius: 3.4cqw;
+        overflow: hidden;
+        background: rgba(200, 210, 240, .70);
+        box-shadow: 0 10px 30px rgba(0, 0, 20, .35);
+      }
+
+      /* ===== Ilustración izquierda ===== */
+      .login-image {
+        flex: 0 0 36.5%;
+        height: 100%;
+        background: #1a4fd6;
+        overflow: hidden;
+      }
+
+      .login-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+
+      /* ===== Panel derecho ===== */
+      .login-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 4%;
+      }
+
+      .login-title {
+        font-size: 22px;
+        font-size: 3.9cqw;
+        font-weight: 400;
+        color: #111;
+        letter-spacing: .5px;
+        margin-bottom: 7%;
+        text-align: center;
+      }
+
+      /* ===== Formulario ===== */
+      .login-form {
+        width: 58%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .login-form label {
+        font-size: 12px;
+        font-size: 1.7cqw;
+        color: #111;
+        margin-bottom: 1.5%;
+        padding-left: 4%;
+      }
+
+      .login-form input {
+        width: 100%;
+        height: 4.6cqw;
+        min-height: 30px;
+        border: none;
+        outline: none;
+        border-radius: 1.4cqw;
+        background: #fff;
+        padding: 0 4%;
+        font-size: 1.8cqw;
+        margin-bottom: 8%;
+      }
+
+      .login-form input:focus {
+        box-shadow: 0 0 0 2px #3d7be8;
+      }
+
+      /* ===== Botón ===== */
+      .btn-aceptar {
+        align-self: center;
+        width: 85%;
+        height: 5cqw;
+        min-height: 34px;
+        margin-top: 4%;
+        background: #0b2a7a;
+        color: #fff;
+        border: 2px solid #3d7be8;
+        border-radius: 1.2cqw;
+        font-size: 1.7cqw;
+        letter-spacing: .5px;
+        cursor: pointer;
+        transition: background .2s;
+      }
+
+      .btn-aceptar:hover {
+        background: #123a9e;
+      }
+    </style>
+</head>
+<body>
+    <main class="login-container">
+
+        <section class="login-card">
+
+            <!-- Ilustración izquierda -->
+            <div class="login-image">
+                <img src="assets/images/images.jpg" alt="Ilustración" />
+            </div>
+
+            <!-- Formulario derecho -->
+            <div class="login-panel">
+                <h1 class="login-title">INICIAR SESION</h1>
+
+                <form class="login-form" action="#" method="post">
+                    <label for="correo">correo electronico:</label>
+                    <input type="email" id="correo" name="correo" required>
+
+                    <label for="clave">contraseña:</label>
+                    <input type="password" id="clave" name="clave" required>
+
+                    <button type="submit" class="btn-aceptar">ACEPTAR</button>
+                </form>
+            </div>
+
+        </section>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistencia</title>
+    <link rel="icon" href="assets/icons/senati.ico" type="image/x-icon">
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* ===== FONDO: cubre toda la pantalla ===== */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", "Montserrat", Arial, sans-serif;
+
+        /* Si tienes la imagen de fondo de tu diseño, descomenta esta línea
+           y borra el bloque "background" de abajo:
+        background: url("assets/images/fondo.png") center / cover no-repeat;
+        */
+        background:
+          linear-gradient(120deg, transparent 18%, rgba(120, 170, 255, .45) 18.3%, transparent 18.8%),
+          linear-gradient(120deg, transparent 22%, rgba(255, 255, 255, .10) 22%, rgba(255, 255, 255, .10) 30%, transparent 30%),
+          linear-gradient(120deg, transparent 36%, rgba(90, 140, 255, .35) 36.3%, transparent 36.8%),
+          linear-gradient(120deg, transparent 52%, rgba(255, 255, 255, .08) 52%, rgba(255, 255, 255, .08) 60%, transparent 60%),
+          linear-gradient(160deg, #2230b5 0%, #151b80 45%, #0a0f45 100%);
+        background-attachment: fixed;
+      }
+
+      /* ===== CONTENEDOR (tablet: 834 px de ancho) ===== */
+      .profile-container {
+        position: relative;
+        width: min(100vw, calc(100vh * 834 / 537));
+        max-width: 834px;
+        aspect-ratio: 834 / 537;
+        container-type: inline-size;
+      }
+
+      /* ===== Panel gris derecho ===== */
+      .side-panel {
+        position: absolute;
+        top: 7.7%;
+        left: 40%;
+        width: 60%;
+        height: 87%;
+        background: rgba(200, 205, 225, .65);
+      }
+
+      /* ===== 1. Logo ===== */
+      .logo-box {
+        position: absolute;
+        top: 3.4%;
+        left: 8.1%;
+        width: 27.4%;
+        height: 18.8%;
+        background: #1e2a8c;
+        border: 2px solid #3d7be8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logo-senati {
+        max-width: 90%;
+        max-height: 85%;
+        object-fit: contain;
+      }
+
+      /* ===== 2. Avatar ===== */
+      .avatar-box {
+        position: absolute;
+        top: 27.6%;
+        left: 9.4%;
+        width: 24.4%;
+        aspect-ratio: 1 / 1;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* ===== 3. Nombre ===== */
+      .user-name {
+        position: absolute;
+        top: 70%;
+        left: 8.1%;
+        width: 27.4%;
+        text-align: center;
+        color: #c9d3f5;
+        font-size: 12px;
+        font-size: 1.5cqw;
+        font-weight: 600;
+        line-height: 1.7;
+        letter-spacing: .3px;
+      }
+
+      /* ===== 4. Cámara ===== */
+      .camera-frame {
+        position: absolute;
+        top: 15.7%;
+        left: 54.8%;
+        width: 33.8%;
+        height: 47.9%;
+        background: #000;
+        border: 7px solid #fff;
+        border-width: 1.2cqw;
+        border-radius: 28px;
+        border-radius: 3.4cqw;
+        overflow: hidden;
+      }
+
+      .camera-feed {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .corner {
+        position: absolute;
+        width: 16%;
+        aspect-ratio: 1 / 1;
+        border: 0 solid #fff;
+      }
+
+      .top-left     { top: 12%;    left: 10%;  border-top-width: 3px;    border-left-width: 3px; }
+      .top-right    { top: 12%;    right: 10%; border-top-width: 3px;    border-right-width: 3px; }
+      .bottom-left  { bottom: 12%; left: 10%;  border-bottom-width: 3px; border-left-width: 3px; }
+      .bottom-right { bottom: 12%; right: 10%; border-bottom-width: 3px; border-right-width: 3px; }
+
+      /* ===== 5. Barra inferior ===== */
+      .status-bar {
+        position: absolute;
+        top: 69.3%;
+        left: 47.2%;
+        width: 47.9%;
+        height: 9.2%;
+        background: #fff;
+        border-radius: 25px;
+        border-radius: 3cqw;
+        display: flex;
+        align-items: center;
+        padding-left: 2.2%;
+      }
+
+      .barcode {
+        display: block;
+        width: 3.4cqw;
+        height: 3.4cqw;
+        background: repeating-linear-gradient(
+          90deg,
+          #000 0 2px,
+          #fff 2px 4px,
+          #000 4px 5px,
+          #fff 5px 8px,
+          #000 8px 11px,
+          #fff 11px 13px
+        );
+      }
+    </style>
+</head>
+<body>
+    <main class="profile-container">
+
+        <!-- Panel gris translúcido de la derecha -->
+        <div class="side-panel"></div>
+
+        <!-- 1. Logo superior -->
+        <div class="logo-box">
+            <img src="assets/images/imagen-bcp.webp" alt="Logo" class="logo-senati" />
+        </div>
+
+        <!-- 2. Avatar de usuario -->
+        <div class="avatar-box">
+            <img src="assets/images/persona.png" alt="Avatar de usuario" class="avatar-img" />
+        </div>
+
+        <!-- 3. Nombre del usuario -->
+        <h2 class="user-name">JHONATAN EDIMAR<br>CELESTINO DE BRITO</h2>
+
+        <!-- 4. Cámara / reconocimiento facial -->
+        <div class="camera-frame">
+            <!-- Tu foto o elemento <video> de la cámara -->
+            <img src="assets/images/camara.gif" alt="Captura facial" class="camera-feed" />
+
+            <!-- 4 esquinas de enfoque facial -->
+            <span class="corner top-left"></span>
+            <span class="corner top-right"></span>
+            <span class="corner bottom-left"></span>
+            <span class="corner bottom-right"></span>
+        </div>
+
+        <!-- 5. Barra con código de barras -->
+        <div class="status-bar">
+            <span class="barcode"></span>
+        </div>
+
+    </main>
+</body>
+</html>
