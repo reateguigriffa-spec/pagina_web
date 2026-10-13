@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes Empleados</title>
+    <link rel="icon" href="assets/icons/senati.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ===== FONDO: cubre toda la pantalla del celular ===== */
+      body {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        font-family: "Poppins", "Montserrat", Arial, sans-serif;
+
+        /* Si tienes la imagen de fondo de tu diseño, descomenta esta línea
+           y borra el bloque "background" de abajo:
+        background: url("assets/images/fondo_reportes_movil.png") center / cover no-repeat;
+        */
+        background:
+          linear-gradient(115deg, transparent 62%, rgba(120, 170, 255, .35) 62.2%, transparent 62.6%),
+          linear-gradient(115deg, transparent 66%, rgba(255, 255, 255, .08) 66%, rgba(255, 255, 255, .08) 74%, transparent 74%),
+          linear-gradient(115deg, transparent 80%, rgba(120, 170, 255, .30) 80.2%, transparent 80.6%),
+          linear-gradient(180deg, #0b2a96 0%, #0a2478 50%, #04144f 100%);
+        background-attachment: fixed;
+      }
+
+      /* ===== CONTENEDOR (ancho de celular, máx. 430 px) ===== */
+      .app {
+        width: 100%;
+        max-width: 430px;
+        height: 100vh;
+        height: 100dvh;                /* altura real en celulares */
+        container-type: inline-size;   /* permite usar cqw */
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ===== BARRA SUPERIOR ===== */
+      .navbar {
+        flex: 0 0 auto;
+        height: 11.6cqw;
+        min-height: 44px;
+        background: #0d2370;
+        border-radius: 0 0 3cqw 3cqw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5cqw 0 6.6cqw;
+        box-shadow: 0 4px 14px rgba(0, 0, 30, .35);
+      }
+
+      .nav-logo {
+        height: 62%;
+        padding: 0 1.5cqw;
+        display: flex;
+        align-items: center;
+        background: rgba(40, 60, 150, .55);
+        border-radius: 1.5cqw;
+      }
+
+      .nav-logo img {
+        max-height: 100%;
+        max-width: 14cqw;
+        object-fit: contain;
+      }
+
+      .nav-iconos {
+        display: flex;
+        align-items: center;
+        gap: 4.5cqw;
+      }
+
+      .icono {
+        width: 7.8cqw;
+        height: 7.8cqw;
+        min-width: 30px;
+        min-height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .icono svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ===== PANEL TRANSLÚCIDO ===== */
+      .panel {
+        flex: 1;
+        min-height: 0;                 /* permite el scroll interno */
+        width: 81.4%;
+        margin: 2.5cqw auto 3.5cqw;
+        background: rgba(175, 190, 230, .55);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 30, .25);
+        padding: 8cqw 0 5cqw;
+        display: flex;
+        justify-content: center;
+      }
+
+      /* ===== TABLA (con scroll vertical) ===== */
+      .table-wrap {
+        width: 80%;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      th {
+        position: sticky;
+        top: 0;
+        background: #2a3fa6;
+        color: #fff;
+        font-weight: 400;
+        font-size: 10px;               /* respaldo */
+        font-size: 3cqw;
+        height: 7cqw;
+        min-height: 26px;
+        border: 1px solid #1a2575;
+      }
+
+      td {
+        background: #e8e8f2;
+        height: 5.7cqw;
+        min-height: 24px;
+        border: 1px solid #111;
+        font-size: 10px;               /* respaldo */
+        font-size: 2.9cqw;
+        text-align: center;
+        color: #222;
+      }
+
+      th:nth-child(1) { width: 34%; }
+      th:nth-child(2) { width: 36.5%; }
+      th:nth-child(3) { width: 29.5%; }
+    </style>
+</head>
+<body>
+    <main class="app">
+
+        <!-- BARRA SUPERIOR -->
+        <header class="navbar">
+            <div class="nav-logo">
+                <!-- Pon aquí tu logo -->
+                <img src="assets/images/imagen-bcp (1).webp" alt="Logo" />
+            </div>
+
+            <div class="nav-iconos">
+                <!-- Lupa -->
+                <button type="button" class="icono" aria-label="Buscar">
+                    <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round">
+                        <circle cx="13" cy="13" r="9"/>
+                        <path d="M20 20l9 9"/>
+                    </svg>
+                </button>
+
+                <!-- Menú -->
+                <button type="button" class="icono" aria-label="Menú">
+                    <svg viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round">
+                        <path d="M3 8h26M3 16h26M3 24h26"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- PANEL CON LA TABLA -->
+        <section class="panel">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Colaborador</th>
+                            <th>Entrada</th>
+                            <th>Salida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

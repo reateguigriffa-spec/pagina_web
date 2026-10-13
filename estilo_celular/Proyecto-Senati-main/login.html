@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="icon" href="assets/icons/senati.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ===== FONDO: cubre toda la pantalla del celular ===== */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        font-family: "Poppins", "Montserrat", Arial, sans-serif;
+
+        /* Si tienes la imagen de fondo de tu diseño, descomenta esta línea
+           y borra el bloque "background" de abajo (y los ::before / ::after):
+        background: url("assets/images/fondo_login_movil.png") center / cover no-repeat;
+        */
+        background: linear-gradient(180deg, #0a6df0 0%, #0a4fc9 35%, #06278f 70%, #020f4f 100%);
+      }
+
+      /* Rombos decorativos del fondo */
+      body::before,
+      body::after {
+        content: "";
+        position: absolute;
+        background: rgba(255, 255, 255, .07);
+        transform: rotate(45deg);
+        pointer-events: none;
+      }
+
+      body::before {
+        width: 70vw;
+        height: 70vw;
+        top: -14vw;
+        left: 18vw;
+      }
+
+      body::after {
+        width: 60vw;
+        height: 60vw;
+        bottom: -18vw;
+        left: -10vw;
+        background: rgba(40, 90, 220, .18);
+      }
+
+      /* ===== CONTENEDOR (ancho de celular, máx. 430 px) ===== */
+      .login-movil {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 430px;
+        container-type: inline-size;   /* permite usar cqw */
+        display: flex;
+        justify-content: center;
+      }
+
+      /* ===== TARJETA ===== */
+      .login-card {
+        width: 88.3%;
+        aspect-ratio: 446 / 482;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 2cqw;
+        border-radius: 24px;           /* respaldo */
+        border-radius: 5.5cqw;
+        background: rgba(190, 205, 240, .72);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        box-shadow: 0 10px 30px rgba(0, 0, 40, .30);
+      }
+
+      .login-title {
+        font-size: 22px;               /* respaldo */
+        font-size: 5.6cqw;
+        font-weight: 400;
+        color: #000;
+        letter-spacing: .3px;
+        margin-bottom: 6cqw;
+        text-align: center;
+      }
+
+      /* ===== Formulario ===== */
+      .login-form {
+        width: 62%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .login-form label {
+        font-size: 14px;               /* respaldo */
+        font-size: 3.5cqw;
+        color: #000;
+        margin-bottom: 1.8cqw;
+        padding-left: 1cqw;
+      }
+
+      .login-form input {
+        width: 100%;
+        height: 8.3cqw;
+        min-height: 38px;
+        border: none;
+        outline: none;
+        border-radius: 0;
+        background: #d9d9d9;
+        padding: 0 1.4cqw;
+        font-family: inherit;
+        font-size: 16px;               /* 16 px mínimo: evita el zoom automático en iPhone */
+        color: #222;
+        margin-bottom: 5cqw;
+      }
+
+      .login-form input::placeholder {
+        color: #6b6b6b;
+      }
+
+      .login-form input:focus {
+        box-shadow: 0 0 0 2px #243a8f;
+      }
+
+      /* ===== Botón ===== */
+      .btn-aceptar {
+        align-self: center;
+        width: 58%;
+        height: 8.3cqw;
+        min-height: 40px;
+        margin-top: 4cqw;
+        background: #243a8f;
+        color: #fff;
+        border: none;
+        font-family: inherit;
+        font-size: 15px;               /* respaldo */
+        font-size: 3.7cqw;
+        letter-spacing: .4px;
+        cursor: pointer;
+        transition: background .2s;
+      }
+
+      .btn-aceptar:hover,
+      .btn-aceptar:active {
+        background: #1a2c75;
+      }
+    </style>
+</head>
+<body>
+    <main class="login-movil">
+
+        <section class="login-card">
+            <h1 class="login-title">INICIAR SESIÓN</h1>
+
+            <form class="login-form" action="#" method="post">
+                <label for="correo">Correo electronico:</label>
+                <input type="email" id="correo" name="correo" placeholder="Ejemplo@gmail.com" required>
+
+                <label for="clave">Contraseña:</label>
+                <input type="password" id="clave" name="clave" placeholder="ingrese su contraseña." required>
+
+                <button type="submit" class="btn-aceptar">ACEPTAR</button>
+            </form>
+        </section>
+
+    </main>
+</body>
+</html>
