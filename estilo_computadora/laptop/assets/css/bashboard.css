@@ -1,0 +1,206 @@
+/* =========================================
+   1. RESET Y BASE
+   ========================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --celeste-1: #2fb3e8;
+  --celeste-2: #1d86d8;
+  --azul-oscuro: #14284f;
+  --texto: #3c4350;
+  --borde-tabla: #b9bfc9;
+  --cabecera-tabla: #dcdcdc;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", "Montserrat", Arial, sans-serif;
+  color: var(--texto);
+  background: linear-gradient(160deg, var(--celeste-1) 0%, var(--celeste-2) 100%);
+  background-attachment: fixed;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Hexágonos decorativos: abajo a la derecha y (girados) arriba a la izquierda */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  background: url("../images/hexagonos-claro.svg") right bottom / contain no-repeat;
+}
+
+body::before {
+  right: 0;
+  bottom: 0;
+  width: min(48vw, 880px);
+  height: min(80vh, 760px);
+}
+
+body::after {
+  left: 0;
+  top: 0;
+  width: min(30vw, 540px);
+  height: min(60vh, 460px);
+  transform: rotate(180deg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* =========================================
+   2. BARRA SUPERIOR
+   ========================================= */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(10px, 1.6vh, 20px) clamp(20px, 3vw, 56px);
+}
+
+.topbar-logo {
+  height: clamp(30px, 3.4vw, 56px);
+  width: auto;
+  display: block;
+}
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.6vw, 48px);
+}
+
+.nav-link {
+  color: #fff;
+  font-size: clamp(14px, 1.15vw, 20px);
+  font-weight: 500;
+  text-decoration: none;
+  padding: 4px 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .15s;
+}
+
+.nav-link:hover,
+.nav-link[aria-current="page"] {
+  border-bottom-color: #fff;
+}
+
+.btn-salir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(34px, 2.8vw, 48px);
+  height: clamp(34px, 2.8vw, 48px);
+  color: #fff;
+  background: var(--azul-oscuro);
+  border-radius: 4px;
+  transition: background .15s;
+}
+
+.btn-salir:hover {
+  background: #0c1a38;
+}
+
+.btn-salir svg {
+  width: 55%;
+  height: 55%;
+}
+
+.nav-link:focus-visible,
+.btn-salir:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, .8);
+  outline-offset: 3px;
+}
+
+/* =========================================
+   3. CONTENIDO: TARJETA BLANCA
+   ========================================= */
+.contenido {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(16px, 3vh, 44px) clamp(20px, 3vw, 56px) clamp(24px, 5vh, 64px);
+}
+
+.tarjeta {
+  width: min(100%, 1180px);
+  min-height: min(68vh, 640px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(28px, 6vh, 80px) clamp(20px, 3vw, 56px);
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(10, 40, 90, .25);
+}
+
+/* =========================================
+   4. TABLA
+   ========================================= */
+.tabla {
+  width: min(100%, 780px);
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: clamp(14px, 1.1vw, 19px);
+}
+
+.tabla th,
+.tabla td {
+  border: 1px solid var(--borde-tabla);
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.7em 0.8em;
+}
+
+.tabla th {
+  background: var(--cabecera-tabla);
+  font-weight: 500;
+  color: #2f3540;
+}
+
+.tabla td {
+  height: clamp(54px, 7.5vh, 84px);
+  white-space: nowrap;
+}
+
+.tabla tbody tr:hover td {
+  background: #f4f8fd;
+}
+
+.tabla .fila-vacia td {
+  height: clamp(40px, 5.5vh, 64px);
+}
+
+/* Tabla con muchos datos: que no se corte en pantallas medianas */
+@media (max-width: 900px) {
+  .tarjeta {
+    overflow-x: auto;
+  }
+
+  .tabla {
+    min-width: 560px;
+  }
+}
